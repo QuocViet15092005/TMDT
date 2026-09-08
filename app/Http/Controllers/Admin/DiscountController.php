@@ -26,16 +26,24 @@ class DiscountController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'code' => 'required|string|unique:discounts,code|max:50',
-            'description' => 'nullable|string|max:500',
-            'discount_type' => 'required|in:percentage,fixed',
-            'discount_value' => 'required|numeric|min:0',
-            'max_uses' => 'nullable|integer|min:1',
+            'name'                => 'required|string|max:255',
+            'code'                => 'required|string|max:50|unique:discounts,code',
+            'description'         => 'nullable|string|max:500',
+            'discount_type'       => 'required|in:percentage,fixed',
+            'discount_value'      => 'required|numeric|min:0',
+            'max_discount_amount' => 'nullable|numeric|min:0',
+            'max_uses'            => 'nullable|integer|min:1',
+            'user_max_uses'       => 'nullable|integer|min:1',
             'min_purchase_amount' => 'nullable|numeric|min:0',
-            'start_date' => 'nullable|date',
-            'end_date' => 'nullable|date|after_or_equal:start_date',
-            'is_active' => 'boolean',
+            'category_type'       => 'nullable|string',
+            'starts_at'           => 'nullable|date',
+            'expires_at'          => 'nullable|date|after_or_equal:starts_at',
+            'is_active'           => 'required|boolean',
+            'is_public'           => 'required|boolean',
         ]);
+
+        $validated['code'] = strtoupper(trim($validated['code']));
+        $validated['min_purchase_amount'] = $validated['min_purchase_amount'] ?? 0;
 
         Discount::create($validated);
 
@@ -54,16 +62,24 @@ class DiscountController extends Controller
     public function update(Request $request, Discount $discount)
     {
         $validated = $request->validate([
-            'code' => 'required|string|unique:discounts,code,' . $discount->id . '|max:50',
-            'description' => 'nullable|string|max:500',
-            'discount_type' => 'required|in:percentage,fixed',
-            'discount_value' => 'required|numeric|min:0',
-            'max_uses' => 'nullable|integer|min:1',
+            'name'                => 'required|string|max:255',
+            'code'                => 'required|string|max:50|unique:discounts,code,' . $discount->id,
+            'description'         => 'nullable|string|max:500',
+            'discount_type'       => 'required|in:percentage,fixed',
+            'discount_value'      => 'required|numeric|min:0',
+            'max_discount_amount' => 'nullable|numeric|min:0',
+            'max_uses'            => 'nullable|integer|min:1',
+            'user_max_uses'       => 'nullable|integer|min:1',
             'min_purchase_amount' => 'nullable|numeric|min:0',
-            'start_date' => 'nullable|date',
-            'end_date' => 'nullable|date|after_or_equal:start_date',
-            'is_active' => 'boolean',
+            'category_type'       => 'nullable|string',
+            'starts_at'           => 'nullable|date',
+            'expires_at'          => 'nullable|date|after_or_equal:starts_at',
+            'is_active'           => 'required|boolean',
+            'is_public'           => 'required|boolean',
         ]);
+
+        $validated['code'] = strtoupper(trim($validated['code']));
+        $validated['min_purchase_amount'] = $validated['min_purchase_amount'] ?? 0;
 
         $discount->update($validated);
 
@@ -81,4 +97,18 @@ class DiscountController extends Controller
             ->route('admin.discounts.index')
             ->with('success', 'Xóa mã giảm giá thành công.');
     }
+    /**
+ * Xem chi tiết thông tin voucher
+ */
+public function show(Discount $discount)
+{
+    // Lấy số lượt đã sử dụng
+    $usedCount = $discount->used_count ?? 0;
+    
+    // Tính tổng tiền tiết kiệm và số người dùng (nếu có quan hệ orders)
+    $totalSavings = method_exists($discount, 'orders') ? ($discount->orders()->sum('discount_amount') ?? 0) : 0;
+    $uniqueUsersCount = method_exists($discount, 'orders') ? $discount->orders()->distinct('user_id')->count('user_id') : 0;
+
+    return view('admin.discounts.show', compact('discount', 'usedCount', 'totalSavings', 'uniqueUsersCount'));
+}
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Discount;
 use App\Models\Order;
 use App\Models\OrderDetail;
 use App\Models\ProductVariant;
@@ -29,17 +30,24 @@ class CheckoutController extends Controller
                 );
         }
 
-        $total = 0;
+        $subtotal = 0;
 
         foreach ($cart as $item) {
-            $total +=
+            $subtotal +=
                 ($item['price'] ?? 0)
                 * ($item['quantity'] ?? 0);
         }
 
+        // Lấy thông tin giảm giá đã áp dụng ở giỏ hàng từ Session
+        $sessionDiscount = session()->get('discount', []);
+        $discountAmount = $sessionDiscount['amount'] ?? 0;
+        $discountCode = $sessionDiscount['code'] ?? '';
+
+        $total = max(0, $subtotal - $discountAmount);
+
         return view(
             'checkout.index',
-            compact('cart', 'total')
+            compact('cart', 'subtotal', 'discountAmount', 'discountCode', 'total')
         );
     }
 
@@ -212,8 +220,13 @@ class CheckoutController extends Controller
                 $discount = null;
                 $discountAmount = 0;
 
-                if (!empty($validated['discount_code'])) {
-                    $discount = \App\Models\Discount::where('code', strtoupper($validated['discount_code']))
+                // Ưu tiên mã từ ô input form, nếu rỗng thì lấy từ Session giỏ hàng
+                $discountCode = !empty($validated['discount_code']) 
+                    ? $validated['discount_code'] 
+                    : session('discount.code');
+
+                if (!empty($discountCode)) {
+                    $discount = Discount::where('code', strtoupper($discountCode))
                         ->first();
 
                     if (!$discount || !$discount->isValid()) {
@@ -233,7 +246,7 @@ class CheckoutController extends Controller
                     $discountAmount = $discount->calculateDiscount($total);
                 }
 
-                $finalTotal = $total - $discountAmount;
+                $finalTotal = max(0, $total - $discountAmount);
 
 
                 /*
@@ -354,11 +367,11 @@ class CheckoutController extends Controller
 
         /*
         |--------------------------------------------------------------------------
-        | XÓA GIỎ HÀNG & LƯU PHIÊN ĐẶT HÀNG
+        | XÓA GIỎ HÀNG, DISCOUNT & LƯU PHIÊN ĐẶT HÀNG
         |--------------------------------------------------------------------------
         */
 
-        session()->forget('cart');
+        session()->forget(['cart', 'discount']);
         session()->put('last_order_id', $order->id);
 
 

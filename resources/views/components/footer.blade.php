@@ -1,4 +1,47 @@
 <footer class="site-footer">
+    <div class="container">
+        {{-- KHỐI ĐĂNG KÝ NHẬN TIN KHUYẾN MÃI --}}
+        <div style="background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); padding: 24px 28px; border-radius: 16px; margin-bottom: 40px;">
+            <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 20px;">
+                <div>
+                    <h3 style="font-size: 1.15rem; font-weight: 700; margin: 0 0 6px 0; color: #fff; display: flex; align-items: center; gap: 8px;">
+                        ✉️ Đăng ký nhận tin khuyến mãi
+                    </h3>
+                    <p style="margin: 0; color: #94a3b8; font-size: 0.88rem;">
+                        Nhận thông tin sản phẩm mới và ưu đãi đặc biệt qua email
+                    </p>
+                </div>
+
+                <form action="{{ route('newsletter.subscribe') }}" method="POST" style="display: flex; gap: 10px; flex-wrap: wrap; align-items: center;">
+                    @csrf
+                    <input type="email" name="email" placeholder="Nhập email của bạn..." required 
+                           style="padding: 10px 14px; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.2); background: rgba(255, 255, 255, 0.08); color: #fff; outline: none; min-width: 220px; font-size: 0.88rem;">
+                    
+                    <input type="text" name="name" placeholder="Tên của bạn (tùy chọn)" 
+                           style="padding: 10px 14px; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.2); background: rgba(255, 255, 255, 0.08); color: #fff; outline: none; min-width: 180px; font-size: 0.88rem;">
+
+                    <button type="submit" style="background: #2563eb; color: #fff; border: none; padding: 10px 22px; border-radius: 8px; font-weight: 700; cursor: pointer; font-size: 0.88rem; transition: background 0.2s;">
+                        Đăng ký
+                    </button>
+                </form>
+            </div>
+
+            {{-- Thông báo gửi Mail --}}
+            @if(session('newsletter_success'))
+                <div style="margin-top: 14px; background: rgba(34, 197, 94, 0.2); color: #4ade80; padding: 8px 12px; border-radius: 6px; font-size: 0.85rem;">
+                    ✓ {{ session('newsletter_success') }}
+                </div>
+            @endif
+
+            @if(session('newsletter_error'))
+                <div style="margin-top: 14px; background: rgba(239, 68, 68, 0.2); color: #f87171; padding: 8px 12px; border-radius: 6px; font-size: 0.85rem;">
+                    ✕ {{ session('newsletter_error') }}
+                </div>
+            @endif
+        </div>
+    </div>
+
+    {{-- CÁC CỘT NỘI DUNG FOOTER --}}
     <div class="container footer-grid">
         <div class="footer-column">
             <h3 style="font-size: 1.3rem; display: flex; align-items: center; gap: 8px;">
@@ -51,4 +94,3 @@
         </div>
     </div>
 </footer>
-

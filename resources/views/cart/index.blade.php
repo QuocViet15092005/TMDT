@@ -139,7 +139,31 @@
             </div>
 
             <!-- Sidebar Summary -->
-            <div style="position: sticky; top: 90px;">
+            <div style="position: sticky; top: 90px; display: flex; flex-direction: column; gap: 20px;">
+                
+                <!-- Bổ sung: Khối nhập Mã Giảm Giá -->
+                <div class="card" style="padding: 20px;">
+                    <label style="font-weight: 700; font-size: 0.95rem; color: var(--dark-color); margin-bottom: 10px; display: block;">
+                        🎟️ Mã giảm giá / Voucher
+                    </label>
+                    
+                    <div style="display: flex; gap: 8px;">
+                        <input 
+                            type="text" 
+                            id="voucher_code" 
+                            value="{{ session('discount.code') ?? '' }}" 
+                            placeholder="Mã voucher..." 
+                            style="flex: 1; padding: 8px 12px; border: 1px solid var(--border-color); border-radius: var(--radius-sm); font-size: 0.9rem; text-transform: uppercase;"
+                        >
+                        <button type="button" id="btn_apply_voucher" class="btn btn-primary" style="padding: 8px 16px; font-size: 0.88rem; white-space: nowrap;">
+                            Áp dụng
+                        </button>
+                    </div>
+
+                    <div id="voucher_message" style="font-size: 0.85rem; margin-top: 10px; display: none;"></div>
+                </div>
+
+                <!-- Khối Bảng Chi Tiết Tạm Tính & Tổng Tiền -->
                 <div class="card" style="padding: 24px;">
                     <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--dark-color); margin: 0 0 18px; padding-bottom: 14px; border-bottom: 1.5px solid var(--border-color);">
                         🧾 Tóm tắt đơn hàng
@@ -148,6 +172,8 @@
                     @php
                         $itemCount = count($cart);
                         $totalUnits = array_sum(array_column($cart, 'quantity'));
+                        $discountAmount = session('discount.amount') ?? 0;
+                        $finalTotal = max(0, $total - $discountAmount);
                     @endphp
 
                     <div style="margin-bottom: 20px; display: grid; gap: 12px; font-size: 0.92rem;">
@@ -159,6 +185,15 @@
                             <span class="text-muted">Tạm tính tiền hàng:</span>
                             <strong>{{ number_format($total, 0, ',', '.') }} VNĐ</strong>
                         </div>
+
+                        <!-- Bổ sung: Dòng giảm giá khi có voucher -->
+                        @if(session()->has('discount'))
+                            <div style="display: flex; justify-content: space-between; color: #10b981;">
+                                <span>Giảm giá ({{ session('discount.code') }}):</span>
+                                <strong>-{{ number_format($discountAmount, 0, ',', '.') }} VNĐ</strong>
+                            </div>
+                        @endif
+
                         <div style="display: flex; justify-content: space-between; align-items: center;">
                             <span class="text-muted">Phí vận chuyển:</span>
                             <span class="badge badge-success">Miễn phí giao hàng</span>
@@ -169,7 +204,7 @@
                         <div style="display: flex; justify-content: space-between; align-items: baseline;">
                             <span style="font-weight: 800; color: var(--dark-color); font-size: 1.05rem;">Tổng thanh toán:</span>
                             <span style="color: var(--secondary-color); font-weight: 800; font-size: 1.55rem; font-family: var(--font-heading);">
-                                {{ number_format($total, 0, ',', '.') }} VNĐ
+                                {{ number_format($finalTotal, 0, ',', '.') }} VNĐ
                             </span>
                         </div>
                     </div>
@@ -195,5 +230,58 @@
         }
     }
 </style>
+
+<!-- Script xử lý gửi Voucher AJAX -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const btnApply = document.getElementById('btn_apply_voucher');
+    const inputCode = document.getElementById('voucher_code');
+    const msgDiv = document.getElementById('voucher_message');
+
+    if (btnApply) {
+        btnApply.addEventListener('click', function() {
+            const code = inputCode.value.trim();
+
+            if (!code) {
+                msgDiv.style.display = 'block';
+                msgDiv.style.color = '#ef4444';
+                msgDiv.innerText = 'Vui lòng nhập mã giảm giá!';
+                return;
+            }
+
+            btnApply.disabled = true;
+            btnApply.innerText = 'Đang xử lý...';
+
+            fetch("{{ route('cart.apply_discount') }}", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "X-CSRF-TOKEN": "{{ csrf_token() }}"
+                },
+                body: JSON.stringify({ code: code })
+            })
+            .then(res => res.json())
+            .then(data => {
+                btnApply.disabled = false;
+                btnApply.innerText = 'Áp dụng';
+
+                msgDiv.style.display = 'block';
+                if (data.success) {
+                    msgDiv.style.color = '#10b981';
+                    msgDiv.innerText = data.message;
+                    setTimeout(() => location.reload(), 700);
+                } else {
+                    msgDiv.style.color = '#ef4444';
+                    msgDiv.innerText = data.message;
+                }
+            })
+            .catch(error => {
+                btnApply.disabled = false;
+                btnApply.innerText = 'Áp dụng';
+                console.error('Error:', error);
+            });
+        });
+    }
+});
+</script>
 @endsection
-

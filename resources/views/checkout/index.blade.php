@@ -36,6 +36,11 @@
     <form method="POST" action="{{ route('checkout.store') }}" id="checkout-form">
         @csrf
 
+        {{-- LƯU MÃ GIẢM GIÁ ĐÃ ÁP DỤNG TỪ SESSION --}}
+        @if(!empty($discountCode))
+            <input type="hidden" name="discount_code" value="{{ $discountCode }}">
+        @endif
+
         <div style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 32px; align-items: start;">
             
             {{-- CỘT TRÁI: THÔNG TIN KHÁCH HÀNG & PHƯƠNG THỨC THANH TOÁN --}}
@@ -189,8 +194,16 @@
                     <div style="display: grid; gap: 10px; font-size: 0.92rem; margin-bottom: 20px;">
                         <div style="display: flex; justify-content: space-between;">
                             <span class="text-muted">Tạm tính:</span>
-                            <strong>{{ number_format($total, 0, ',', '.') }} VNĐ</strong>
+                            <strong>{{ number_format($subtotal, 0, ',', '.') }} VNĐ</strong>
                         </div>
+
+                        @if($discountAmount > 0)
+                            <div style="display: flex; justify-content: space-between; color: #16a34a;">
+                                <span>Giảm giá ({{ $discountCode }}):</span>
+                                <strong>-{{ number_format($discountAmount, 0, ',', '.') }} VNĐ</strong>
+                            </div>
+                        @endif
+
                         <div style="display: flex; justify-content: space-between; align-items: center;">
                             <span class="text-muted">Phí giao hàng:</span>
                             <span class="badge badge-success">Miễn phí</span>
@@ -228,4 +241,4 @@
         }
     }
 </style>
-@endsection
+@endsection

@@ -10,25 +10,41 @@ class Discount extends Model
     use HasFactory;
 
     protected $fillable = [
+        'name',
         'code',
         'description',
         'discount_type', // 'percentage' hoặc 'fixed'
         'discount_value',
+        'max_discount_amount',
         'max_uses',
+        'user_max_uses',
         'used_count',
         'min_purchase_amount',
-        'start_date',
-        'end_date',
+        'category_type',
+        'starts_at',
+        'expires_at',
         'is_active',
+        'is_public',
     ];
 
     protected $casts = [
         'discount_value' => 'decimal:2',
+        'max_discount_amount' => 'decimal:2',
         'min_purchase_amount' => 'decimal:2',
-        'start_date' => 'datetime',
-        'end_date' => 'datetime',
+        'starts_at' => 'datetime',
+        'expires_at' => 'datetime',
         'is_active' => 'boolean',
+        'is_public' => 'boolean',
     ];
+
+    /**
+     * Quan hệ với các Đơn hàng (Orders)
+     * Thêm phương thức này để sửa lỗi Call to undefined method orders()
+     */
+    public function orders()
+    {
+        return $this->hasMany(Order::class, 'discount_id');
+    }
 
     // Kiểm tra voucher còn hiệu lực
     public function isValid()
@@ -42,11 +58,11 @@ class Discount extends Model
         }
 
         $now = now();
-        if ($this->start_date && $now < $this->start_date) {
+        if ($this->starts_at && $now < $this->starts_at) {
             return false;
         }
 
-        if ($this->end_date && $now > $this->end_date) {
+        if ($this->expires_at && $now > $this->expires_at) {
             return false;
         }
 
@@ -65,7 +81,14 @@ class Discount extends Model
         }
 
         if ($this->discount_type === 'percentage') {
-            return ($amount * $this->discount_value) / 100;
+            $discount = ($amount * $this->discount_value) / 100;
+            
+            // Nếu có thiết lập mức giảm tối đa
+            if ($this->max_discount_amount && $discount > $this->max_discount_amount) {
+                return $this->max_discount_amount;
+            }
+            
+            return $discount;
         } else {
             return min($this->discount_value, $amount);
         }

@@ -21,38 +21,53 @@
     <div class="card">
         <div class="card-body p-0">
             <div class="table-responsive">
-                <table class="data-table">
+                <table class="data-table" style="width: 100%; border-collapse: collapse;">
                     <thead>
                         <tr>
-                            <th>Mã Voucher</th>
-                            <th>Mô tả</th>
-                            <th>Loại giảm</th>
-                            <th>Giá trị</th>
-                            <th>Số lượng</th>
-                            <th>Trạng thái</th>
-                            <th>Hành động</th>
+                            <th style="width: 15%; padding: 12px 16px;">Mã Voucher</th>
+                            <th style="width: 25%; padding: 12px 16px;">Mô tả</th>
+                            <th style="width: 15%; padding: 12px 16px; text-align: center;">Loại giảm</th>
+                            <th style="width: 12%; padding: 12px 16px; text-align: center;">Giá trị</th>
+                            <th style="width: 13%; padding: 12px 16px; text-align: center;">Số lượng</th>
+                            <th style="width: 10%; padding: 12px 16px; text-align: center;">Trạng thái</th>
+                            <th style="width: 10%; padding: 12px 16px; text-align: center;">Hành động</th>
                         </tr>
                     </thead>
                     <tbody>
                         @forelse($discounts as $discount)
                             <tr>
-                                <td><strong style="color: var(--primary-color);">{{ $discount->code }}</strong></td>
-                                <td>{{ $discount->description ?? 'Không có' }}</td>
-                                <td>{{ $discount->discount_type === 'percentage' ? 'Phần trăm (%)' : 'Cố định (VNĐ)' }}</td>
-                                <td class="font-bold">
+                                <td style="padding: 12px 16px;">
+                                    <strong style="color: var(--primary-color);">{{ $discount->code }}</strong>
+                                    @if($discount->name)
+                                        <div style="font-size: 0.85rem; color: #6c757d;">{{ $discount->name }}</div>
+                                    @endif
+                                </td>
+                                <td style="padding: 12px 16px; color: #6c757d;">{{ $discount->description ?? 'Không có' }}</td>
+                                <td style="padding: 12px 16px; text-align: center;">
+                                    {{ $discount->discount_type === 'percentage' ? 'Phần trăm (%)' : 'Cố định (VNĐ)' }}
+                                </td>
+                                <td class="font-bold" style="padding: 12px 16px; text-align: center;">
                                     {{ $discount->discount_type === 'percentage' ? $discount->discount_value . '%' : number_format($discount->discount_value, 0, ',', '.') . ' VNĐ' }}
                                 </td>
-                                <td>{{ $discount->used_count ?? 0 }} / {{ $discount->max_uses ?? '∞' }}</td>
-                                <td>
+                                <td style="padding: 12px 16px; text-align: center;">
+                                    {{ $discount->used_count ?? 0 }} / {{ $discount->max_uses ?? '∞' }}
+                                </td>
+                                <td style="padding: 12px 16px; text-align: center;">
                                     @if($discount->is_active)
                                         <span class="badge badge-success">Đang bật</span>
                                     @else
                                         <span class="badge badge-danger">Tắt</span>
                                     @endif
                                 </td>
-                                <td>
-                                    <div style="display: flex; gap: 8px;">
+                                <td style="padding: 12px 16px; text-align: center;">
+                                    <div style="display: flex; gap: 6px; justify-content: center;">
+                                        <!-- Nút Xem chi tiết mới thêm -->
+                                        <a href="{{ route('admin.discounts.show', $discount) }}" class="btn btn-info text-white" style="padding: 6px 12px; font-size: 0.85rem; background-color: #17a2b8; border-color: #17a2b8;">Xem</a>
+                                        
+                                        <!-- Nút Chỉnh sửa -->
                                         <a href="{{ route('admin.discounts.edit', $discount) }}" class="btn btn-secondary" style="padding: 6px 12px; font-size: 0.85rem;">Sửa</a>
+                                        
+                                        <!-- Nút Xóa -->
                                         <form action="{{ route('admin.discounts.destroy', $discount) }}" method="POST" onsubmit="return confirm('Bạn có chắc muốn xóa mã này?');">
                                             @csrf
                                             @method('DELETE')

@@ -13,6 +13,8 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\WishlistController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\VoucherController;
+use App\Http\Controllers\NewsletterController;
 
 // Admin Controllers
 use App\Http\Controllers\Admin\CategoryController
@@ -61,6 +63,30 @@ Route::get(
 
 /*
 |--------------------------------------------------------------------------
+| NEWSLETTER (ĐĂNG KÝ NHẬN TIN KHUYẾN MÃI)
+|--------------------------------------------------------------------------
+*/
+
+Route::post(
+    '/newsletter/subscribe',
+    [NewsletterController::class, 'subscribe']
+)->name('newsletter.subscribe');
+
+
+/*
+|--------------------------------------------------------------------------
+| VOUCHERS (KHUYẾN MÃI)
+|--------------------------------------------------------------------------
+*/
+
+Route::get(
+    '/vouchers',
+    [VoucherController::class, 'index']
+)->name('vouchers.index');
+
+
+/*
+|--------------------------------------------------------------------------
 | CART
 |--------------------------------------------------------------------------
 */
@@ -93,6 +119,12 @@ Route::delete(
     '/cart/clear',
     [CartController::class, 'clear']
 )->name('cart.clear');
+
+
+Route::post(
+    '/cart/apply-discount',
+    [CartController::class, 'applyDiscount']
+)->name('cart.apply_discount');
 
 
 /*
@@ -169,6 +201,12 @@ Route::middleware('auth')->group(function () {
     Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::get('/profile/password', [ProfileController::class, 'passwordForm'])->name('profile.password');
     Route::post('/profile/password', [ProfileController::class, 'updatePassword'])->name('profile.password.update');
+
+    // Lịch sử voucher cá nhân
+    Route::get(
+        '/vouchers/history',
+        [VoucherController::class, 'history']
+    )->name('vouchers.history');
 
     // Danh sách đơn hàng
     Route::get(

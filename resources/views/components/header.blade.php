@@ -12,6 +12,11 @@
             <a href="{{ route('products.index') }}" class="nav-link {{ request()->routeIs('products.*') ? 'active' : '' }}">
                 👟 Sản phẩm
             </a>
+
+            {{-- NÚT VOUCHER MỚI THÊM --}}
+            <a href="{{ route('vouchers.index') }}" class="nav-link {{ request()->routeIs('vouchers.*') ? 'active' : '' }}">
+                🎫 Voucher
+            </a>
             
             @php
                 $cartCount = count(session('cart', []));
@@ -78,4 +83,3 @@
         </div>
     @endif
 </header>
-
