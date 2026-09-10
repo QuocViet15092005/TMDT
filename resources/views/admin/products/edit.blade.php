@@ -6,12 +6,12 @@
 <div class="container section-space" style="max-width: 800px;">
     <div class="orders-page-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
         <div>
-            <h1 class="section-title" style="margin-bottom: 4px;">✏️ Sửa thông tin sản phẩm</h1>
+            <h1 class="section-title" style="margin-bottom: 4px;"> Sửa thông tin sản phẩm</h1>
             <p class="section-subtitle" style="margin: 0;">Cập nhật thông tin chi tiết cho <strong>{{ $product->name }}</strong></p>
         </div>
         <div style="display: flex; gap: 10px;">
             <a href="{{ route('admin.products.show', $product) }}" class="btn btn-secondary" style="background: #f0fdf4; color: #166534; border-color: #bbf7d0;">
-                🎨 Quản lý Size
+                 Quản lý Size
             </a>
             <a href="{{ route('admin.products.index') }}" class="btn btn-secondary">
                 ← Quay lại danh sách
@@ -84,7 +84,7 @@
             <div style="display: flex; gap: 12px; justify-content: flex-end;">
                 <a href="{{ route('admin.products.index') }}" class="btn btn-secondary" style="padding: 10px 20px;">Hủy</a>
                 <button type="submit" class="btn btn-primary" style="padding: 10px 24px; font-weight: 600;">
-                    💾 Cập nhật sản phẩm
+                     Cập nhật sản phẩm
                 </button>
             </div>
         </form>

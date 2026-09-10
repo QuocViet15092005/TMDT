@@ -6,7 +6,7 @@
 <div class="container section-space" style="max-width: 800px;">
     <div class="orders-page-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
         <div>
-            <h1 class="section-title" style="margin-bottom: 4px;">➕ Thêm sản phẩm mới</h1>
+            <h1 class="section-title" style="margin-bottom: 4px;"> Thêm sản phẩm mới</h1>
             <p class="section-subtitle" style="margin: 0;">Điền thông tin chi tiết để thêm sản phẩm vào cửa hàng</p>
         </div>
         <a href="{{ route('admin.products.index') }}" class="btn btn-secondary">
@@ -79,7 +79,7 @@
             <div style="display: flex; gap: 12px; justify-content: flex-end;">
                 <a href="{{ route('admin.products.index') }}" class="btn btn-secondary" style="padding: 10px 20px;">Hủy bỏ</a>
                 <button type="submit" class="btn btn-primary" style="padding: 10px 24px; font-weight: 600;">
-                    💾 Lưu sản phẩm
+                     Lưu sản phẩm
                 </button>
             </div>
         </form>

@@ -6,12 +6,12 @@
 <div class="container section-space">
     <div class="orders-page-header" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; margin-bottom: 24px;">
         <div>
-            <h1 class="section-title" style="margin-bottom: 4px;">🎨 Quản lý Kích cỡ (Size) & Tồn kho</h1>
+            <h1 class="section-title" style="margin-bottom: 4px;"> Quản lý Kích cỡ (Size) & Tồn kho</h1>
             <p class="section-subtitle" style="margin: 0;">Sản phẩm: <strong>{{ $product->name }}</strong></p>
         </div>
         <div style="display: flex; gap: 10px;">
             <a href="{{ route('admin.products.edit', $product) }}" class="btn btn-primary">
-                ✏️ Sửa thông tin sản phẩm
+                 Sửa thông tin sản phẩm
             </a>
             <a href="{{ route('admin.products.index') }}" class="btn btn-secondary">
                 ← Quay lại danh sách
@@ -38,7 +38,7 @@
     <div class="dashboard-grid-2">
         {{-- THÔNG TIN CƠ BẢN CỦA SẢN PHẨM --}}
         <div class="panel">
-            <h2 style="margin-top: 0; margin-bottom: 16px; font-size: 1.15rem;">📦 Thông tin sản phẩm</h2>
+            <h2 style="margin-top: 0; margin-bottom: 16px; font-size: 1.15rem;"> Thông tin sản phẩm</h2>
             <div style="display: flex; gap: 20px; align-items: flex-start;">
                 @if($product->image)
                     <img 
@@ -128,14 +128,14 @@
                                     <td style="text-align: right;">
                                         <div style="display: inline-flex; gap: 8px; align-items: center;">
                                             <button type="submit" class="btn btn-primary" style="padding: 6px 12px; font-size: 0.85rem;">
-                                                💾 Lưu thay đổi
+                                                 Lưu thay đổi
                                             </button>
                                 </form>
                                             <form action="{{ route('admin.variants.destroy', $variant) }}" method="POST" class="inline-form" onsubmit="return confirm('Bạn có chắc muốn xóa biến thể này?')">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-danger" style="padding: 6px 12px; font-size: 0.85rem;">
-                                                    🗑️ Xóa
+                                                     Xóa
                                                 </button>
                                             </form>
                                         </div>

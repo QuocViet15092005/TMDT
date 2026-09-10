@@ -6,15 +6,15 @@
 <div class="container section-space">
     <div class="orders-page-header" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; margin-bottom: 24px;">
         <div>
-            <h1 class="section-title" style="margin-bottom: 4px;">👟 Quản lý sản phẩm</h1>
+            <h1 class="section-title" style="margin-bottom: 4px;"> Quản lý sản phẩm</h1>
             <p class="section-subtitle" style="margin: 0;">Danh sách toàn bộ sản phẩm, thêm mới, sửa giá, kho hàng và xóa sản phẩm.</p>
         </div>
         <div style="display: flex; gap: 10px;">
             <a href="{{ route('admin.products.create') }}" class="btn btn-primary" style="display: flex; align-items: center; gap: 6px; font-weight: 600;">
-                ➕ Thêm sản phẩm mới
+                 Thêm sản phẩm mới
             </a>
             <a href="{{ route('admin.categories.index') }}" class="btn btn-secondary">
-                🏷️ Quản lý danh mục
+                 Quản lý danh mục
             </a>
         </div>
     </div>
@@ -133,16 +133,16 @@
                             <td style="text-align: right;">
                                 <div style="display: inline-flex; gap: 6px; align-items: center;">
                                     <a href="{{ route('admin.products.edit', $product) }}" class="btn btn-secondary" style="padding: 5px 10px; font-size: 0.85rem;" title="Chỉnh sửa thông tin">
-                                        ✏️ Sửa
+                                         Sửa
                                     </a>
                                     <a href="{{ route('admin.products.show', $product) }}" class="btn btn-secondary" style="padding: 5px 10px; font-size: 0.85rem; background: #f0fdf4; color: #166534; border-color: #bbf7d0;" title="Quản lý kích cỡ Size">
-                                        🎨 Size
+                                         Size
                                     </a>
                                     <form action="{{ route('admin.products.destroy', $product) }}" method="POST" class="inline-form" onsubmit="return confirm('Bạn có chắc chắn muốn xóa sản phẩm \'{{ $product->name }}\'? Hành động này không thể hoàn tác!')">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger" style="padding: 5px 10px; font-size: 0.85rem;" title="Xóa sản phẩm">
-                                            🗑️ Xóa
+                                             Xóa
                                         </button>
                                     </form>
                                 </div>

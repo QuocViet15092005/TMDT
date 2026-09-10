@@ -8,7 +8,7 @@
     {{-- HEADER BAR --}}
     <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; margin-bottom: 24px;">
         <div>
-            <h1 class="section-title" style="margin-bottom: 4px;">👟 Tất cả sản phẩm</h1>
+            <h1 class="section-title" style="margin-bottom: 4px;"> Tất cả sản phẩm</h1>
             <p class="text-muted" style="margin: 0; font-size: 0.95rem;">
                 Hiển thị <strong>{{ $products->total() }}</strong> sản phẩm chất lượng cao
             </p>
@@ -16,12 +16,12 @@
         
         @if(auth()->check() && auth()->user()->role === 'admin')
             <div style="display: flex; gap: 10px; align-items: center;">
-                <span class="badge badge-primary">🛡️ Chế độ Quản trị</span>
+                <span class="badge badge-primary"> Chế độ Quản trị</span>
                 <a href="{{ route('admin.products.create') }}" class="btn btn-primary" style="font-size: 0.88rem;">
-                    ➕ Thêm mới
+                     Thêm mới
                 </a>
                 <a href="{{ route('admin.products.index') }}" class="btn btn-secondary" style="font-size: 0.88rem;">
-                    ⚙️ Quản lý kho
+                     Quản lý kho
                 </a>
             </div>
         @endif
@@ -41,13 +41,13 @@
                 type="text"
                 name="search"
                 value="{{ request('search') }}"
-                placeholder="🔍 Tìm kiếm tên giày, áo, phụ kiện..."
+                placeholder=" Tìm kiếm tên giày, áo, phụ kiện..."
             >
         </div>
 
         <div>
             <select name="category">
-                <option value="">🏷️ Tất cả danh mục</option>
+                <option value=""> Tất cả danh mục</option>
                 @foreach($categories as $category)
                     <option
                         value="{{ $category->id }}"
@@ -61,12 +61,12 @@
 
         <div>
             <select name="sort">
-                <option value="">✨ Mới nhất trước</option>
+                <option value=""> Mới nhất trước</option>
                 <option value="price_asc" @selected(request('sort') == 'price_asc')>
-                    💵 Giá: Thấp → Cao
+                     Giá: Thấp → Cao
                 </option>
                 <option value="price_desc" @selected(request('sort') == 'price_desc')>
-                    💎 Giá: Cao → Thấp
+                     Giá: Cao → Thấp
                 </option>
             </select>
         </div>
@@ -102,7 +102,7 @@
                         >
                     @else
                         <div style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: #f1f5f9; color: #94a3b8; font-weight: 600;">
-                            👟 Chưa có ảnh
+                             No Photo
                         </div>
                     @endif
 
@@ -112,7 +112,7 @@
                         </span>
                     @elseif(($product->total_sold ?? 0) > 0)
                         <span class="product-card-badge">
-                            🔥 Đã bán {{ $product->total_sold }}
+                             Đã bán {{ $product->total_sold }}
                         </span>
                     @endif
 
@@ -200,16 +200,16 @@
                     @if(auth()->check() && auth()->user()->role === 'admin')
                         <div style="display: flex; gap: 6px; margin-top: 12px; padding-top: 10px; border-top: 1px dashed var(--border-color);">
                             <a href="{{ route('admin.products.edit', $product) }}" class="btn btn-secondary" style="flex: 1; padding: 4px 6px; font-size: 0.78rem;">
-                                ✏️ Sửa
+                                 Edit
                             </a>
                             <a href="{{ route('admin.products.show', $product) }}" class="btn btn-secondary" style="flex: 1; padding: 4px 6px; font-size: 0.78rem; background: #ecfdf5; color: #065f46; border-color: #a7f3d0;">
-                                🎨 Size
+                                 Size
                             </a>
                             <form action="{{ route('admin.products.destroy', $product) }}" method="POST" class="inline-form" onsubmit="return confirm('Bạn có chắc muốn xóa sản phẩm này?')" style="flex: 1;">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger" style="width: 100%; padding: 4px 6px; font-size: 0.78rem;">
-                                    🗑️ Xóa
+                                     Xóa
                                 </button>
                             </form>
                         </div>
@@ -234,4 +234,4 @@
     </div>
 
 </div>
-@endsection
+@endsection

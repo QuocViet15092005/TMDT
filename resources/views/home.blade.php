@@ -135,7 +135,7 @@
         <div class="swiper hero-swiper">
             <div class="swiper-wrapper">
                 
-                {{-- SLIDE 1 --}}
+               {{-- SLIDE 1: QUẦN ÁO BÓNG ĐÁ --}}
                 <div class="swiper-slide">
                     <div class="hero-slide-item">
                         <div class="hero-slide-content">
@@ -149,12 +149,14 @@
                             </a>
                         </div>
                         <div class="hero-slide-image">
-                            <img src="https://thanhhungfutsal.com/vnt_upload/product/01_2024/thumbs/600_crop_mizuno_sky_pack.png" alt="Unity Sky Pack" onerror="this.src='https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=800&q=80'">
+                            <img src="https://images.unsplash.com/photo-1518091043644-c1d4457512c6?auto=format&fit=crop&w=800&q=80" 
+                                 alt="Quần áo bóng đá" 
+                                 onerror="this.src='https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&w=800&q=80'">
                         </div>
                     </div>
                 </div>
 
-                {{-- SLIDE 2 --}}
+              {{-- SLIDE 2: GIÀY BÓNG ĐÁ --}}
                 <div class="swiper-slide">
                     <div class="hero-slide-item">
                         <div class="hero-slide-content">
@@ -168,12 +170,14 @@
                             </a>
                         </div>
                         <div class="hero-slide-image">
-                            <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=800&q=80" alt="Nike Speed">
+                            <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=800&q=80" 
+                                 alt="Giày bóng đá"
+                                 onerror="this.src='https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=800&q=80'">
                         </div>
                     </div>
                 </div>
 
-                {{-- SLIDE 3 --}}
+                {{-- SLIDE 3: PHỤ KIỆN BÓNG ĐÁ --}}
                 <div class="swiper-slide">
                     <div class="hero-slide-item">
                         <div class="hero-slide-content">
@@ -187,7 +191,7 @@
                             </a>
                         </div>
                         <div class="hero-slide-image">
-                            <img src="https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?auto=format&fit=crop&w=800&q=80" alt="Adidas Control">
+                            <img src="https://images.unsplash.com/photo-1614632537190-23e4146777db?auto=format&fit=crop&w=800&q=80" alt="Phụ kiện bóng đá">
                         </div>
                     </div>
                 </div>
@@ -271,11 +275,11 @@
                         
                         @if(($product->total_sold ?? 0) > 0)
                             <span class="product-card-badge">
-                                🔥 Đã bán {{ $product->total_sold }}
+                                 Đã bán {{ $product->total_sold }}
                             </span>
                         @else
                             <span class="product-card-badge" style="background: linear-gradient(135deg, #0ea5e9, #0284c7);">
-                                ⭐ Bán chạy
+                                 Bán chạy
                             </span>
                         @endif
 
@@ -351,7 +355,7 @@
 <div class="container section-space" style="padding-top: 10px;">
     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; flex-wrap: wrap; gap: 10px;">
         <div>
-            <h2 class="section-title" style="margin-bottom: 4px;">✨ Hàng mới về</h2>
+            <h2 class="section-title" style="margin-bottom: 4px;"> Hàng mới về</h2>
             <p class="text-muted" style="font-size: 0.92rem; margin: 0;">Cập nhật những mẫu sản phẩm mới nhất vừa cập bến Sport Shop</p>
         </div>
         <a href="{{ route('products.index') }}" class="btn btn-secondary" style="font-size: 0.88rem; padding: 8px 16px;">Xem tất cả &rarr;</a>

@@ -6,12 +6,12 @@
 <div class="container section-space">
     <div class="orders-page-header" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; margin-bottom: 24px;">
         <div>
-            <h1 class="section-title" style="margin-bottom: 4px;">🏷️ Quản lý danh mục sản phẩm</h1>
+            <h1 class="section-title" style="margin-bottom: 4px;"> Quản lý danh mục sản phẩm</h1>
             <p class="section-subtitle" style="margin: 0;">Thêm mới, sửa thông tin và xóa danh mục thể thao</p>
         </div>
         <div>
             <a href="{{ route('admin.products.index') }}" class="btn btn-secondary">
-                👟 Quản lý sản phẩm
+                 Quản lý sản phẩm
             </a>
         </div>
     </div>
@@ -31,7 +31,7 @@
     <div class="dashboard-grid-2">
         {{-- FORM THÊM MỚI DANH MỤC --}}
         <div class="panel">
-            <h2 style="margin-top: 0; margin-bottom: 16px; font-size: 1.15rem;">➕ Thêm danh mục mới</h2>
+            <h2 style="margin-top: 0; margin-bottom: 16px; font-size: 1.15rem;">Thêm danh mục mới</h2>
             <form action="{{ route('admin.categories.store') }}" method="POST">
                 @csrf
                 <div class="form-group" style="margin-bottom: 14px;">
@@ -48,7 +48,7 @@
 
         {{-- THỐNG KÊ NHANH --}}
         <div class="panel" style="display: flex; flex-direction: column; justify-content: center;">
-            <h2 style="margin-top: 0; margin-bottom: 12px; font-size: 1.15rem;">💡 Hướng dẫn quản trị danh mục</h2>
+            <h2 style="margin-top: 0; margin-bottom: 12px; font-size: 1.15rem;"> Hướng dẫn quản trị danh mục</h2>
             <ul style="color: #475569; font-size: 0.9rem; line-height: 1.7; padding-left: 20px; margin: 0;">
                 <li>Danh mục giúp khách hàng dễ dàng tìm kiếm và lọc sản phẩm trên trang chủ và cửa hàng.</li>
                 <li>Bạn có thể chỉnh sửa tên và mô tả trực tiếp ở bảng danh sách bên dưới.</li>
@@ -59,7 +59,7 @@
 
     {{-- DANH SÁCH DANH MỤC --}}
     <div class="panel" style="margin-top: 24px;">
-        <h2 style="margin-top: 0; margin-bottom: 16px; font-size: 1.15rem;">📋 Danh sách danh mục ({{ $categories->total() }})</h2>
+        <h2 style="margin-top: 0; margin-bottom: 16px; font-size: 1.15rem;"> Danh sách danh mục ({{ $categories->total() }})</h2>
 
         @if($categories->isEmpty())
             <div class="alert alert-info">
@@ -98,14 +98,14 @@
                                     <td style="text-align: right;">
                                         <div style="display: inline-flex; gap: 6px; align-items: center;">
                                             <button type="submit" class="btn btn-secondary" style="padding: 5px 10px; font-size: 0.85rem;" title="Lưu thông tin chỉnh sửa">
-                                                💾 Lưu
+                                                 Lưu
                                             </button>
                                 </form>
                                             <form action="{{ route('admin.categories.destroy', $category) }}" method="POST" class="inline-form" onsubmit="return confirm('Bạn có chắc muốn xóa danh mục \'{{ $category->name }}\'?')">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-danger" style="padding: 5px 10px; font-size: 0.85rem;" title="Xóa danh mục">
-                                                    🗑️ Xóa
+                                                     Xóa
                                                 </button>
                                             </form>
                                         </div>
