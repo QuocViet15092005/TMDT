@@ -10,7 +10,7 @@
 <style>
 .hero-slider-section {
     position: relative;
-    background: #e2f1f8; /* Màu nền xanh nhạt rực rỡ */
+    background: #e2f1f8; /* Màu nền xanh nhạt rực rỡ như mẫu */
     overflow: hidden;
 }
 
@@ -73,6 +73,13 @@
     font-weight: 800;
     font-size: 0.9rem;
     text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.25s ease;
+}
+
+.btn-hero-buy:hover {
+    background: #000000;
+    color: #ffffff;
 }
 
 .hero-slide-image {
@@ -128,59 +135,59 @@
         <div class="swiper hero-swiper">
             <div class="swiper-wrapper">
                 
-                {{-- SLIDE 1: GIÀY CỎ NHÂN TẠO --}}
+                {{-- SLIDE 1 --}}
                 <div class="swiper-slide">
                     <div class="hero-slide-item">
                         <div class="hero-slide-content">
                             <div class="hero-brand-tag">
-                                <span>BÓNG ĐÁ</span> / <span>TF SOLE</span>
+                                <span>MIZUNO</span> / <span>01.2026</span>
                             </div>
-                            <h1 class="hero-slide-title">GIÀY CỎ<br>NHÂN TẠO</h1>
-                            <p class="hero-slide-desc">Tổng hợp các mẫu giày đinh TF chính hãng hỗ trợ bám sân tối đa, êm chân và tăng tốc vượt trội.</p>
-                            <span class="btn-hero-buy">
-                                KHÁM PHÁ NGAY <span>▷</span>
-                            </span>
+                            <h1 class="hero-slide-title">UNITY SKY<br>PACK</h1>
+                            <p class="hero-slide-desc">Khám phá bộ sưu tập giày bóng đá sân cỏ nhân tạo và Futsal mới nhất với phối màu xanh bầu trời rực rỡ.</p>
+                            <a href="{{ route('products.index') }}" class="btn-hero-buy">
+                                MUA NGAY <span>▷</span>
+                            </a>
                         </div>
                         <div class="hero-slide-image">
-                            <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=800&q=80" alt="Giày Cỏ Nhân Tạo">
+                            <img src="https://thanhhungfutsal.com/vnt_upload/product/01_2024/thumbs/600_crop_mizuno_sky_pack.png" alt="Unity Sky Pack" onerror="this.src='https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=800&q=80'">
                         </div>
                     </div>
                 </div>
 
-                {{-- SLIDE 2: MIZUNO UNITY SKY PACK --}}
+                {{-- SLIDE 2 --}}
                 <div class="swiper-slide">
                     <div class="hero-slide-item">
                         <div class="hero-slide-content">
                             <div class="hero-brand-tag">
-                                <span>MIZUNO</span> / <span>UNITY SKY PACK</span>
+                                <span>NIKE</span> / <span>MERCURIAL</span>
                             </div>
-                            <h1 class="hero-slide-title">UNITY SKY<br>COLLECTION</h1>
-                            <p class="hero-slide-desc">Bộ sưu tập Mizuno mới nhất với gam màu xanh bầu trời rực rỡ, ôm chân chuẩn form người Việt.</p>
-                            <span class="btn-hero-buy">
-                                XEM BỘ SƯU TẬP <span>▷</span>
-                            </span>
+                            <h1 class="hero-slide-title">SPEED &<br>POWER</h1>
+                            <p class="hero-slide-desc">Bứt phá tốc độ trên mọi mặt sân với dòng sản phẩm cao cấp vừa cập bến tại Sport Shop.</p>
+                            <a href="{{ route('products.index') }}" class="btn-hero-buy">
+                                MUA NGAY <span>▷</span>
+                            </a>
                         </div>
                         <div class="hero-slide-image">
-                            <img src="https://thanhhungfutsal.com/vnt_upload/product/01_2024/thumbs/600_crop_mizuno_sky_pack.png" alt="Mizuno Unity Sky Pack" onerror="this.src='https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=800&q=80'">
+                            <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=800&q=80" alt="Nike Speed">
                         </div>
                     </div>
                 </div>
 
-                {{-- SLIDE 3: TRANG PHỤC THỂ THAO CHÍNH HÃNG --}}
+                {{-- SLIDE 3 --}}
                 <div class="swiper-slide">
                     <div class="hero-slide-item">
                         <div class="hero-slide-content">
                             <div class="hero-brand-tag">
-                                <span>APPAREL</span> / <span>CHÍNH HÃNG</span>
+                                <span>ADIDAS</span> / <span>PREDATOR</span>
                             </div>
-                            <h1 class="hero-slide-title">TRANG PHỤC<br>THỂ THAO</h1>
-                            <p class="hero-slide-desc">Quần áo bóng đá, áo thun tập luyện chất liệu co giãn, thấm hút mồ hôi tối đa cho vận động viên.</p>
-                            <span class="btn-hero-buy">
-                                SẮM NGAY <span>▷</span>
-                            </span>
+                            <h1 class="hero-slide-title">ACCURACY<br>CONTROL</h1>
+                            <p class="hero-slide-desc">Kiểm soát bóng tuyệt đối, kiến tạo đường chuyền hoàn hảo cùng ưu đãi giảm giá đến 20%.</p>
+                            <a href="{{ route('vouchers.index') }}" class="btn-hero-buy">
+                                XEM KHUYẾN MÃI <span>▷</span>
+                            </a>
                         </div>
                         <div class="hero-slide-image">
-                            <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=800&q=80" alt="Trang Phục Thể Thao">
+                            <img src="https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?auto=format&fit=crop&w=800&q=80" alt="Adidas Control">
                         </div>
                     </div>
                 </div>

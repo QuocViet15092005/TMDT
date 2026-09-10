@@ -13,7 +13,7 @@
                 <form action="{{ route('products.index') }}" method="GET" class="search-form">
                     <input type="text" name="search" value="{{ request('search') }}" placeholder="Bạn đang tìm kiếm ..." autocomplete="off">
                     <button type="submit" aria-label="Tìm kiếm">
-                        🔍
+                        🔍︎
                     </button>
                 </form>
             </div>
@@ -48,15 +48,15 @@
         <div class="container">
             <div class="main-nav">
                 <a href="{{ route('home') }}" class="nav-link {{ request()->routeIs('home') ? 'active' : '' }}">
-                    🏠 Trang chủ
+                     Trang chủ
                 </a>
                 
                 <a href="{{ route('products.index') }}" class="nav-link {{ request()->routeIs('products.*') ? 'active' : '' }}">
-                    👟 Sản phẩm
+                    Tất cả sản phẩm
                 </a>
                 
                 <a href="{{ route('cart.index') }}" class="nav-link {{ request()->routeIs('cart.*') ? 'active' : '' }}">
-                    🛒 Giỏ hàng
+                     Giỏ hàng
                     @if($cartCount > 0)
                         <span class="nav-badge">{{ $cartCount }}</span>
                     @endif
@@ -65,30 +65,30 @@
                 @auth
                     {{-- NÚT VOUCHER (CHỈ HIỆN KHI ĐÃ ĐĂNG NHẬP) --}}
                     <a href="{{ route('vouchers.index') }}" class="nav-link {{ request()->routeIs('vouchers.*') ? 'active' : '' }}">
-                        🎫 Voucher
+                         Voucher
                     </a>
 
                     @php
                         $wishlistCount = \App\Models\Wishlist::where('user_id', auth()->id())->count();
                     @endphp
                     <a href="{{ route('wishlists.index') }}" class="nav-link {{ request()->routeIs('wishlists.*') ? 'active' : '' }}">
-                        ❤️ Yêu thích
+                         Yêu thích
                         @if($wishlistCount > 0)
                             <span class="nav-badge" style="background: #ec4899;">{{ $wishlistCount }}</span>
                         @endif
                     </a>
 
                     <a href="{{ route('orders.index') }}" class="nav-link {{ request()->routeIs('orders.*') ? 'active' : '' }}">
-                        📦 Đơn mua
+                         Đơn mua
                     </a>
 
                     <a href="{{ route('profile.show') }}" class="nav-link {{ request()->routeIs('profile.*') ? 'active' : '' }}">
-                        👤 {{ Str::limit(auth()->user()->name, 12) }}
+                         {{ Str::limit(auth()->user()->name, 12) }}
                     </a>
 
                     @if(auth()->user()->role === 'admin')
                         <a href="{{ route('admin.dashboard') }}" class="admin-badge-nav">
-                            🛡️ Quản trị Admin
+                             Quản trị Admin
                         </a>
                     @endif
 
@@ -100,10 +100,10 @@
                     </form>
                 @else
                     <a href="{{ route('login.form') }}" class="nav-link {{ request()->routeIs('login.form') ? 'active' : '' }}">
-                        🔑 Đăng nhập
+                         Đăng nhập
                     </a>
                     <a href="{{ route('register.form') }}" class="btn btn-primary" style="padding: 6px 16px; font-size: 0.88rem;">
-                        ✨ Đăng ký
+                         Đăng ký
                     </a>
                 @endauth
             </div>
@@ -114,7 +114,7 @@
     @if(auth()->check() && auth()->user()->role === 'admin' && request()->is('admin*'))
         <div class="admin-subbar">
             <div class="container admin-subbar-inner">
-                <span class="admin-subbar-title">⚙️ MENU QUẢN TRỊ:</span>
+                <span class="admin-subbar-title"> MENU QUẢN TRỊ:</span>
                 <a href="{{ route('admin.dashboard') }}" class="{{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">📊 Tổng quan</a>
                 <a href="{{ route('admin.orders.index') }}" class="{{ request()->routeIs('admin.orders.*') ? 'active' : '' }}">📦 Đơn hàng</a>
                 <a href="{{ route('admin.products.index') }}" class="{{ request()->routeIs('admin.products.*') ? 'active' : '' }}">👟 Sản phẩm</a>
