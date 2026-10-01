@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ProductVariant;
 use App\Models\Discount;
+use App\Models\ProductVariant;
 use Illuminate\Http\Request;
 
 class CartController extends Controller
@@ -31,7 +31,6 @@ class CartController extends Controller
             $subtotal += $price * $quantity;
         }
 
-        // Tính tiền giảm giá từ session nếu có
         $discountData = session()->get('discount', null);
         $discountAmount = 0;
 
@@ -54,7 +53,6 @@ class CartController extends Controller
         $code = strtoupper(trim($request->input('code')));
         $discount = Discount::where('code', $code)->first();
 
-        // 1. Kiểm tra tồn tại
         if (!$discount) {
             return response()->json([
                 'success' => false,
@@ -62,7 +60,6 @@ class CartController extends Controller
             ]);
         }
 
-        // 2. Kiểm tra hiệu lực (ngày bắt đầu, hết hạn, kích hoạt)
         if (!$discount->isValid()) {
             return response()->json([
                 'success' => false,
@@ -70,9 +67,9 @@ class CartController extends Controller
             ]);
         }
 
-        // 3. Tính tổng tiền giỏ hàng
         $cart = session()->get('cart', []);
         $cartTotal = 0;
+
         foreach ($cart as $item) {
             $price = isset($item['price']) && is_numeric($item['price'])
                 ? (float) $item['price']
@@ -96,7 +93,6 @@ class CartController extends Controller
             ]);
         }
 
-        // 4. Kiểm tra đơn hàng tối thiểu
         if ($discount->min_purchase_amount && $cartTotal < $discount->min_purchase_amount) {
             return response()->json([
                 'success' => false,
@@ -104,10 +100,8 @@ class CartController extends Controller
             ]);
         }
 
-        // 5. Tính giá trị giảm
         $discountAmount = $discount->calculateDiscount($cartTotal);
 
-        // 6. Lưu thông tin vào Session
         session()->put('discount', [
             'id' => $discount->id,
             'code' => $discount->code,
@@ -207,7 +201,6 @@ class CartController extends Controller
             $cart[$variantId]['quantity'] = $validated['quantity'];
             session()->put('cart', $cart);
 
-            // Cập nhật lại số tiền giảm giá nếu giỏ hàng thay đổi
             $this->recalculateDiscount();
         }
 
@@ -223,7 +216,6 @@ class CartController extends Controller
             unset($cart[$variantId]);
             session()->put('cart', $cart);
 
-            // Cập nhật lại số tiền giảm giá
             $this->recalculateDiscount();
         }
 
@@ -246,10 +238,11 @@ class CartController extends Controller
     {
         if (session()->has('discount')) {
             $discountData = session()->get('discount');
-            $discount = Discount::find($discountData['id']);
+            $discount = Discount::find($discountData['id'] ?? null);
 
             $cart = session()->get('cart', []);
             $cartTotal = 0;
+
             foreach ($cart as $item) {
                 $price = isset($item['price']) && is_numeric($item['price'])
                     ? (float) $item['price']
