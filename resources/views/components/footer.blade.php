@@ -5,7 +5,7 @@
             <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 20px;">
                 <div>
                     <h3 style="font-size: 1.15rem; font-weight: 700; margin: 0 0 6px 0; color: #fff; display: flex; align-items: center; gap: 8px;">
-                        ✉️ Đăng ký nhận tin khuyến mãi
+                        Đăng ký nhận tin khuyến mãi
                     </h3>
                     <p style="margin: 0; color: #94a3b8; font-size: 0.88rem;">
                         Nhận thông tin sản phẩm mới và ưu đãi đặc biệt qua email
@@ -45,24 +45,24 @@
     <div class="container footer-grid">
         <div class="footer-column">
             <h3 style="font-size: 1.3rem; display: flex; align-items: center; gap: 8px;">
-                <span>⚡</span> SPORT SHOP
+                <span></span> SPORT SHOP
             </h3>
             <p>
                 Hệ thống bán lẻ trang phục, giày dép & phụ kiện thể thao chính hãng hàng đầu. Đem lại trải nghiệm mua sắm tiện lợi, nhanh chóng với chất lượng tốt nhất.
             </p>
             <div style="margin-top: 16px; display: flex; gap: 10px;">
-                <span style="background: rgba(255,255,255,0.1); padding: 6px 12px; border-radius: 8px; font-size: 0.82rem; color: #cbd5e1;">🛡️ 100% Chính Hãng</span>
-                <span style="background: rgba(255,255,255,0.1); padding: 6px 12px; border-radius: 8px; font-size: 0.82rem; color: #cbd5e1;">🚚 Giao Toàn Quốc</span>
+                <span style="background: rgba(255,255,255,0.1); padding: 6px 12px; border-radius: 8px; font-size: 0.82rem; color: #cbd5e1;">100% Chính Hãng</span>
+                <span style="background: rgba(255,255,255,0.1); padding: 6px 12px; border-radius: 8px; font-size: 0.82rem; color: #cbd5e1;">Giao Toàn Quốc</span>
             </div>
         </div>
 
         <div class="footer-column">
             <h3>Chính sách & Hỗ trợ</h3>
-            <a href="#">📋 Hướng dẫn chọn size</a>
-            <a href="#">🚚 Chính sách giao hàng</a>
-            <a href="#">🔄 Quy định đổi trả & bảo hành</a>
-            <a href="#">🛡️ Chính sách bảo mật</a>
-            <a href="#">❓ Câu hỏi thường gặp</a>
+            <a href="#">Hướng dẫn chọn size</a>
+            <a href="#">Chính sách giao hàng</a>
+            <a href="#">Quy định đổi trả & bảo hành</a>
+            <a href="#">Chính sách bảo mật</a>
+            <a href="#">Câu hỏi thường gặp</a>
         </div>
 
         <div class="footer-column">
@@ -70,10 +70,10 @@
             <p style="margin-bottom: 12px;">Chấp nhận nhiều hình thức thanh toán linh hoạt:</p>
             <div style="display: flex; flex-direction: column; gap: 8px;">
                 <div style="background: rgba(255,255,255,0.06); padding: 8px 12px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; gap: 8px; color: #e2e8f0; font-size: 0.88rem;">
-                    <span>📱</span> Chuyển khoản VietQR Napas 247
+                    <span></span> Chuyển khoản VietQR Napas 247
                 </div>
                 <div style="background: rgba(255,255,255,0.06); padding: 8px 12px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; gap: 8px; color: #e2e8f0; font-size: 0.88rem;">
-                    <span>💵</span> Thanh toán khi nhận hàng (COD)
+                    <span></span> Thanh toán khi nhận hàng (COD)
                 </div>
             </div>
         </div>

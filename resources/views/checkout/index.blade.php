@@ -127,7 +127,7 @@
                             >
                             <div>
                                 <strong style="display: block; font-size: 0.98rem; color: var(--dark-color); margin-bottom: 2px;">
-                                    💵 Thanh toán khi nhận hàng (COD)
+                                    Thanh toán khi nhận hàng (COD)
                                 </strong>
                                 <span style="font-size: 0.85rem; color: var(--slate-500);">
                                     Kiểm tra hàng trước khi nhận, thanh toán tiền mặt cho nhân viên giao hàng.
@@ -147,7 +147,7 @@
                                 >
                                 <div>
                                     <strong style="display: block; font-size: 0.98rem; color: var(--primary-color); margin-bottom: 2px;">
-                                        📱 Chuyển khoản VietQR Code (Tự động xác nhận)
+                                        Chuyển khoản VietQR Code (Tự động xác nhận)
                                     </strong>
                                     <span style="font-size: 0.85rem; color: var(--slate-500);">
                                         Quét mã VietQR bằng bất kỳ App ngân hàng nào (MB, VCB, Momo, Techcom...). Hệ thống tự động xác thực và duyệt đơn sau 1 giây.
@@ -156,7 +156,7 @@
                             </label>
                         @else
                             <div style="padding: 14px 16px; background: #f8fafc; border: 1px dashed var(--border-color); border-radius: var(--radius-md); font-size: 0.85rem; color: var(--slate-500);">
-                                💡 Bạn muốn thanh toán trực tuyến qua <strong>VietQR</strong>? Vui lòng <a href="{{ route('login.form') }}" style="color: var(--primary-color); font-weight: 700;">Đăng nhập</a> trước khi đặt hàng.
+                                Bạn muốn thanh toán trực tuyến qua <strong>VietQR</strong>? Vui lòng <a href="{{ route('login.form') }}" style="color: var(--primary-color); font-weight: 700;">Đăng nhập</a> trước khi đặt hàng.
                             </div>
                         @endauth
                     </div>
@@ -168,7 +168,7 @@
             <div style="position: sticky; top: 90px;">
                 <div class="card" style="padding: 24px;">
                     <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--dark-color); margin-bottom: 18px; padding-bottom: 14px; border-bottom: 1.5px solid var(--border-color);">
-                        📦 Đơn hàng của bạn ({{ count($cart) }})
+                        Đơn hàng của bạn ({{ count($cart) }})
                     </h3>
 
                     {{-- DANH SÁCH SẢN PHẨM NHỎ --}}
@@ -220,11 +220,11 @@
                     </div>
 
                     <button type="submit" class="btn btn-primary btn-lg" style="width: 100%; font-size: 1.05rem; margin-bottom: 12px;">
-                        🚀 Hoàn tất đặt hàng ngay
+                        Hoàn tất đặt hàng ngay
                     </button>
 
                     <a href="{{ route('cart.index') }}" class="btn btn-secondary" style="width: 100%; font-size: 0.9rem;">
-                        ← Quay lại giỏ hàng
+                        Quay lại giỏ hàng
                     </a>
                 </div>
             </div>

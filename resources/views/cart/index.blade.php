@@ -30,7 +30,7 @@
             <h2 style="color: var(--dark-color); margin-bottom: 10px; font-size: 1.5rem; font-weight: 800;">Giỏ hàng của bạn đang trống</h2>
             <p class="text-muted" style="margin-bottom: 28px; font-size: 0.98rem;">Hãy khám phá thêm hàng trăm sản phẩm thể thao chất lượng cao tại Sport Shop.</p>
             <a href="{{ route('products.index') }}" class="btn btn-primary btn-lg">
-                👟 Khám phá sản phẩm ngay
+                Khám phá sản phẩm ngay
             </a>
         </div>
     @else
@@ -121,7 +121,7 @@
 
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 8px;">
                     <a href="{{ route('products.index') }}" class="btn btn-secondary">
-                        ← Tiếp tục chọn thêm sản phẩm
+                        Tiếp tục chọn thêm sản phẩm
                     </a>
 
                     <form action="{{ route('cart.clear') }}" method="POST" class="inline-form">
@@ -132,7 +132,7 @@
                             onclick="return confirm('Bạn có chắc muốn xóa sạch toàn bộ giỏ hàng?')"
                             class="link-button"
                         >
-                            🗑️ Xóa toàn bộ giỏ
+                            Xóa toàn bộ giỏ
                         </button>
                     </form>
                 </div>
@@ -144,7 +144,7 @@
                 <!-- Bổ sung: Khối nhập Mã Giảm Giá -->
                 <div class="card" style="padding: 20px;">
                     <label style="font-weight: 700; font-size: 0.95rem; color: var(--dark-color); margin-bottom: 10px; display: block;">
-                        🎟️ Mã giảm giá / Voucher
+                        Mã giảm giá / Voucher
                     </label>
                     
                     <div style="display: flex; gap: 8px;">
@@ -166,7 +166,7 @@
                 <!-- Khối Bảng Chi Tiết Tạm Tính & Tổng Tiền -->
                 <div class="card" style="padding: 24px;">
                     <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--dark-color); margin: 0 0 18px; padding-bottom: 14px; border-bottom: 1.5px solid var(--border-color);">
-                        🧾 Tóm tắt đơn hàng
+                        Tóm tắt đơn hàng
                     </h3>
 
                     @php
@@ -210,11 +210,11 @@
                     </div>
 
                     <a href="{{ route('checkout.index') }}" class="btn btn-primary btn-lg" style="width: 100%; margin-bottom: 12px;">
-                        💳 Tiến hành đặt hàng ngay
+                        Tiến hành đặt hàng ngay
                     </a>
 
                     <div style="text-align: center; font-size: 0.8rem; color: var(--slate-400); margin-top: 12px;">
-                        🔒 Đảm bảo thanh toán an toàn 100%
+                        Đảm bảo thanh toán an toàn 100%
                     </div>
                 </div>
             </div>

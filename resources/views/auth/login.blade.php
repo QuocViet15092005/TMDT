@@ -7,7 +7,7 @@
     <div class="auth-box">
         <div style="text-align: center; margin-bottom: 20px;">
             <div style="width: 56px; height: 56px; background: var(--primary-light); color: var(--primary-color); border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 1.6rem; margin-bottom: 12px;">
-                🔑
+                
             </div>
             <h1>Đăng nhập</h1>
             <p class="auth-subtitle">Chào mừng bạn quay lại với hệ thống Sport Shop!</p>
@@ -42,7 +42,7 @@
             </div>
 
             <button type="submit" class="btn btn-primary btn-lg" style="width: 100%; margin-bottom: 16px;">
-                🚀 Đăng nhập ngay
+                Đăng nhập
             </button>
         </form>
 

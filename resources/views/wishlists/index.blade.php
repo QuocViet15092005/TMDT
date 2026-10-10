@@ -28,7 +28,7 @@
             <h3 style="font-size: 1.35rem; margin-bottom: 8px; font-weight: 800;">Danh sách yêu thích đang trống</h3>
             <p class="text-muted" style="margin-bottom: 24px;">Hãy duyệt qua các mẫu giày đá bóng, áo đấu và phụ kiện yêu thích để lưu vào đây nhé.</p>
             <a href="{{ route('products.index') }}" class="btn btn-primary btn-lg">
-                👟 Khám phá sản phẩm ngay
+                Khám phá sản phẩm ngay
             </a>
         </div>
     @else

@@ -23,7 +23,7 @@
             @elseif($order->payment_status === 'failed')
                 <span class="badge badge-danger">✕ Thanh toán thất bại</span>
             @else
-                <span class="badge badge-warning">🕒 Chưa thanh toán</span>
+                <span class="badge badge-warning">Chưa thanh toán</span>
             @endif
         </div>
     </div>
@@ -254,9 +254,9 @@
                         <div class="info-label">Hình thức:</div>
                         <div class="info-value font-bold">
                             @if($order->payment_method === 'cod')
-                                💵 Thanh toán khi nhận hàng (COD)
+                                Thanh toán khi nhận hàng (COD)
                             @elseif($order->payment_method === 'qr')
-                                📱 Chuyển khoản qua mã QR
+                                Chuyển khoản qua mã QR
                             @else
                                 {{ strtoupper($order->payment_method) }}
                             @endif
@@ -271,7 +271,7 @@
                             @elseif($order->payment_status === 'failed')
                                 <span class="badge badge-danger">✕ Thanh toán thất bại</span>
                             @else
-                                <span class="badge badge-warning">🕒 Chưa thanh toán</span>
+                                <span class="badge badge-warning">Chưa thanh toán</span>
                             @endif
                         </div>
                     </div>
@@ -279,7 +279,7 @@
                     @if($order->payment_method === 'qr' && $order->payment_status === 'paid')
                         <div style="background: #ecfdf5; border: 1px solid #a7f3d0; border-radius: 8px; padding: 12px 14px; margin-top: 14px;">
                             <div style="display: flex; align-items: center; gap: 6px; color: #065f46; font-weight: 700; font-size: 0.95rem; margin-bottom: 4px;">
-                                <span>🎉</span> ĐÃ XÁC THỰC THANH TOÁN QR
+                                <span></span> ĐÃ XÁC THỰC THANH TOÁN QR
                             </div>
                             <p style="margin: 0; color: #047857; font-size: 0.85rem; line-height: 1.4;">
                                 Giao dịch thanh toán chuyển khoản qua mã QR đã được hệ thống xác thực thành công. Shop đang chuẩn bị sản phẩm để giao đến bạn!
@@ -291,7 +291,7 @@
                         <div class="qr-pay-box mt-3">
                             <p class="qr-tip">Đơn hàng thanh toán qua QR. Bạn có thể bấm nút dưới để xem mã QR và thanh toán:</p>
                             <a href="{{ route('payment.qr', $order) }}" class="btn btn-success btn-block">
-                                📲 Mở mã QR thanh toán ngay
+                                Mở mã QR thanh toán ngay
                             </a>
                         </div>
                     @endif
@@ -302,7 +302,7 @@
             <div class="card order-actions-card">
                 <div class="card-body d-grid gap-2">
                     <a href="{{ route('products.index') }}" class="btn btn-secondary btn-block">
-                        🛍️ Tiếp tục mua sắm
+                        Tiếp tục mua sắm
                     </a>
 
                     @if($order->order_status === 'pending')

@@ -241,16 +241,16 @@
 {{-- DANH MỤC NỔI BẬT --}}
 <div class="container section-space">
     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 10px;">
-        <h2 class="section-title" style="margin-bottom: 0;">🏷️ Danh mục sản phẩm</h2>
+        <h2 class="section-title" style="margin-bottom: 0;">Danh mục sản phẩm</h2>
         <a href="{{ route('products.index') }}" class="btn btn-secondary" style="font-size: 0.85rem; padding: 6px 14px;">Xem tất cả &rarr;</a>
     </div>
     <div class="category-list">
         <a href="{{ route('products.index') }}" class="category-item {{ !request('category') ? 'active' : '' }}">
-            🌟 Tất cả danh mục
+            Tất cả danh mục
         </a>
         @foreach($categories as $category)
             <a href="{{ route('products.index', ['category' => $category->id]) }}" class="category-item {{ request('category') == $category->id ? 'active' : '' }}">
-                👟 {{ $category->name }}
+                {{ $category->name }}
             </a>
         @endforeach
     </div>
@@ -261,7 +261,7 @@
     <div class="container section-space" style="padding-top: 10px;">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; flex-wrap: wrap; gap: 10px;">
             <div>
-                <h2 class="section-title" style="margin-bottom: 4px;">🔥 Sản phẩm bán chạy nhất</h2>
+                <h2 class="section-title" style="margin-bottom: 4px;">Sản phẩm bán chạy nhất</h2>
                 <p class="text-muted" style="font-size: 0.92rem; margin: 0;">Những mẫu giày và trang phục được yêu thích và lựa chọn nhiều nhất</p>
             </div>
             <a href="{{ route('products.index') }}" class="btn btn-secondary" style="font-size: 0.88rem; padding: 8px 16px;">Xem tất cả &rarr;</a>

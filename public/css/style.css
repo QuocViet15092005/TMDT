@@ -928,6 +928,99 @@ input:focus, select:focus, textarea:focus {
     justify-content: center;
 }
 
+/* Custom Pagination Nav */
+.custom-pagination-nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    margin-top: 36px;
+}
+
+.custom-pagination {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    background: #fff;
+    border: 1px solid var(--border-color, #e2e8f0);
+    border-radius: 14px;
+    padding: 6px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+}
+
+.custom-pagination .page-item {
+    display: flex;
+}
+
+.custom-pagination .page-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 38px;
+    height: 38px;
+    padding: 0 10px;
+    border-radius: 10px;
+    background: transparent;
+    border: none;
+    color: #475569;
+    font-weight: 600;
+    font-size: 0.875rem;
+    text-decoration: none;
+    transition: background 0.18s ease, color 0.18s ease, transform 0.15s ease;
+    cursor: pointer;
+    user-select: none;
+}
+
+.custom-pagination .page-link:hover {
+    background: #f1f5f9;
+    color: var(--primary-color, #2563eb);
+    transform: translateY(-1px);
+}
+
+.custom-pagination .page-item.active .page-link {
+    background: var(--primary-color, #2563eb);
+    color: #fff;
+    box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35);
+    transform: none;
+}
+
+.custom-pagination .page-item.disabled .page-link {
+    opacity: 0.38;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+.custom-pagination .page-arrow {
+    color: #64748b;
+    min-width: 36px;
+}
+
+.custom-pagination .page-arrow:hover {
+    background: #f1f5f9;
+    color: var(--primary-color, #2563eb);
+}
+
+.custom-pagination .page-dots {
+    min-width: 28px;
+    color: #94a3b8;
+    letter-spacing: 1px;
+}
+
+.pagination-info {
+    font-size: 0.8rem;
+    color: #94a3b8;
+    margin: 0;
+}
+
+.pagination-info strong {
+    color: #475569;
+    font-weight: 600;
+}
+
+/* Legacy .pagination fallback */
 .pagination {
     display: flex;
     gap: 6px;

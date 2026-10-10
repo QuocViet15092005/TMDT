@@ -171,7 +171,7 @@
                     <div style="font-size: 0.82rem; margin-bottom: 14px;">
                         @if($inStock)
                             <span style="color: #10b981; font-weight: 700; display: inline-flex; align-items: center; gap: 4px;">
-                                ● Còn hàng ({{ $totalQuantity }} cái)
+                                ● Còn hàng ({{ $totalQuantity }} sản phẩm)
                             </span>
                         @else
                             <span style="color: #ef4444; font-weight: 700; display: inline-flex; align-items: center; gap: 4px;">

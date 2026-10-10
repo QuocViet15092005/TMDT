@@ -68,13 +68,13 @@
                         {{-- TRẠNG THÁI ĐƠN HÀNG --}}
                         @switch($order->order_status)
                             @case('pending')
-                                <span class="badge badge-warning">🕒 Chờ xác nhận</span>
+                                <span class="badge badge-warning">Chờ xác nhận</span>
                                 @break
                             @case('confirmed')
-                                <span class="badge badge-primary">📦 Đã xác nhận</span>
+                                <span class="badge badge-primary">Đã xác nhận</span>
                                 @break
                             @case('shipping')
-                                <span class="badge badge-info">🚚 Đang giao hàng</span>
+                                <span class="badge badge-info">Đang giao hàng</span>
                                 @break
                             @case('completed')
                                 <span class="badge badge-success">✓ Hoàn thành</span>
@@ -154,9 +154,9 @@
             </div>
         @empty
             <div class="order-empty-state">
-                <div class="empty-icon">📦</div>
+                <div class="empty-icon"></div>
                 <h3>Chưa có đơn hàng nào</h3>
-                <p>Bạn chưa đặt đơn hàng nào ở trạng thái này.</p>
+                <p>Bạn chưa đặt đơn hàng nào ở trạng thái này</p>
                 <a href="{{ route('products.index') }}" class="btn btn-primary">
                     Khám phá sản phẩm ngay
                 </a>

@@ -101,7 +101,7 @@
 
                 {{-- NÚT SAO CHÉP MÃ --}}
                 <button type="button" class="btn-copy-code" onclick="copyCode('{{ $voucher->code }}', this)">
-                    📋 Sao chép mã
+                    Sao chép mã
                 </button>
             </div>
         @empty

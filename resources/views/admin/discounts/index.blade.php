@@ -6,7 +6,7 @@
 <div class="container section-space">
     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; flex-wrap: wrap; gap: 16px;">
         <div>
-            <h1 class="section-title" style="margin-bottom: 4px;">🎟️ Quản lý mã giảm giá</h1>
+            <h1 class="section-title" style="margin-bottom: 4px;">Quản lý mã giảm giá</h1>
             <p class="section-subtitle" style="margin: 0;">Danh sách các voucher khuyến mãi của cửa hàng.</p>
         </div>
         <a href="{{ route('admin.discounts.create') }}" class="btn btn-primary">+ Tạo mã giảm giá mới</a>
